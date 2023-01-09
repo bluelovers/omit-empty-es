@@ -43,7 +43,7 @@ describe('objects', () => {
   it('should work for objects', () => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     function Test() {}
-    // @ts-expect-error
+    // @ts-ignore
     const instance = new Test();
     const literal = {};
     const createdNull = Object.create(null);
@@ -124,7 +124,7 @@ describe('es6 features', () => {
     expect(kindOf(map)).toEqual('map');
     expect(kindOf(map.set)).toEqual('function');
     expect(kindOf(map.get)).toEqual('function');
-    // @ts-expect-error
+    // @ts-ignore
     expect(kindOf(map.add)).toEqual('undefined');
   });
 
@@ -133,7 +133,7 @@ describe('es6 features', () => {
     expect(kindOf(weakmap)).toEqual('weakmap');
     expect(kindOf(weakmap.set)).toEqual('function');
     expect(kindOf(weakmap.get)).toEqual('function');
-    // @ts-expect-error
+    // @ts-ignore
     expect(kindOf(weakmap.add)).toEqual('undefined');
   });
 
@@ -141,9 +141,9 @@ describe('es6 features', () => {
     const set = new Set();
     expect(kindOf(set)).toEqual('set');
     expect(kindOf(set.add)).toEqual('function');
-    // @ts-expect-error
+    // @ts-ignore
     expect(kindOf(set.set)).toEqual('undefined');
-    // @ts-expect-error
+    // @ts-ignore
     expect(kindOf(set.get)).toEqual('undefined');
   });
 
@@ -151,9 +151,9 @@ describe('es6 features', () => {
     const weakset = new WeakSet();
     expect(kindOf(weakset)).toEqual('weakset');
     expect(kindOf(weakset.add)).toEqual('function');
-    // @ts-expect-error
+    // @ts-ignore
     expect(kindOf(weakset.set)).toEqual('undefined');
-    // @ts-expect-error
+    // @ts-ignore
     expect(kindOf(weakset.get)).toEqual('undefined');
   });
 

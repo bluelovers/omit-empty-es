@@ -1,33 +1,8 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "emitDecoratorMetadata": false,
-    "experimentalDecorators": false,
-    "esModuleInterop": true,
-    "importHelpers": true,
-    // See https://devblogs.microsoft.com/typescript/typescript-and-babel-7/
-    "isolatedModules": true,
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "resolveJsonModule": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "preserveSymlinks": true,
-    "pretty": true,
-    "removeComments": true,
-    "sourceMap": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "stripInternal": true,
-    "target": "ES2022",
-    "allowJs": false
-  }
+  "extends": "@bluelovers/tsconfig/tsdx/index.json",
+  "compilerOptions": {},
+  "exclude": [
+    "dist",
+    "test"
+  ]
 }

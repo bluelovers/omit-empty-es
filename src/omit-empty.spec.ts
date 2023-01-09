@@ -59,7 +59,7 @@ describe('omit-empty', () => {
 
   it('should not omit functions', () => {
     // eslint-disable-next-line no-unused-vars
-    // @ts-expect-error
+    // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const fn = (a, b, c) => {};
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -147,6 +147,7 @@ describe('omit-empty', () => {
       a: {
         b: { c: 'foo', d: 0, e: { f: { g: {}, h: { i: 'i' } } } },
         foo: [['bar', 'baz'], []],
+        // @ts-ignore
         bar: [],
         one: 1,
         two: 2,

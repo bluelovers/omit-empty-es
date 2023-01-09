@@ -13,7 +13,7 @@ const omitEmpty = <Output, Input = unknown>(
   /* eslint-disable no-param-reassign */
   const omit = (value: Input) => {
     if (Array.isArray(value)) {
-      // @ts-expect-error
+      // @ts-ignore
       value = value.map((v) => omit(v)).filter((v) => !isEmpty(v, omitZero));
     }
 
@@ -21,14 +21,14 @@ const omitEmpty = <Output, Input = unknown>(
       const result = {};
       // eslint-disable-next-line no-restricted-syntax
       for (const key of Object.keys(value)) {
-        // @ts-expect-error
+        // @ts-ignore
         const val = omit(value[key]);
         if (val !== void 0) {
-          // @ts-expect-error
+          // @ts-ignore
           result[key] = val;
         }
       }
-      // @ts-expect-error
+      // @ts-ignore
       value = result;
     }
 
@@ -58,22 +58,22 @@ function isEmpty<Input = unknown>(value: Input, omitZero: boolean) {
       return false;
     case 'string':
     case 'arguments':
-      // @ts-expect-error
+      // @ts-ignore
       return value.length === 0;
     case 'file':
     case 'map':
     case 'set':
-      // @ts-expect-error
+      // @ts-ignore
       return value.size === 0;
     case 'number':
-      // @ts-expect-error
+      // @@ts-ignore
       return omitZero ? value === 0 : false;
     case 'error':
-      // @ts-expect-error
+      // @ts-ignore
       return value.message === '';
     case 'array':
       // eslint-disable-next-line no-restricted-syntax
-      // @ts-expect-error
+      // @ts-ignore
       for (const ele of value) {
         if (!isEmpty(ele, omitZero)) {
           return false;
@@ -83,7 +83,7 @@ function isEmpty<Input = unknown>(value: Input, omitZero: boolean) {
     case 'object':
       // eslint-disable-next-line no-restricted-syntax
       for (const key of Object.keys(value)) {
-        // @ts-expect-error
+        // @ts-ignore
         if (!isEmpty(value[key], omitZero)) {
           return false;
         }
@@ -93,6 +93,15 @@ function isEmpty<Input = unknown>(value: Input, omitZero: boolean) {
       return true;
     }
   }
+}
+
+// @ts-ignore
+if (process.env.TSDX_FORMAT !== 'esm')
+{
+  Object.defineProperty(omitEmpty, "__esModule", { value: true });
+
+  Object.defineProperty(omitEmpty, 'omitEmpty', { value: omitEmpty });
+  Object.defineProperty(omitEmpty, 'default', { value: omitEmpty });
 }
 
 export default omitEmpty;

@@ -1,1 +1,1 @@
-export { default } from './omit-empty';
+export { default, default as omitEmpty } from './omit-empty';
